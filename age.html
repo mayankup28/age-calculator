@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(195, 192, 192);
+            padding: 40px 200px;
+        }
+
+        #card{
+            display: flex;
+            justify-content: center;
+        }
+        .form-group{
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .form-group input{
+            padding: 10px;
+            text-align: center;
+        }
+        .form-group input:hover{
+            border: 1px solid cyan;
+        }
+        .form-group select:hover{
+            border: 1px solid cyan;
+        }
+        .form-group select{
+            padding: 10px;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+        }
+        .col{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px 0;
+        }
+        .btn{
+            padding: 10px;
+            border: none;
+        }
+        .btn:hover{
+            background-color: yellow;
+            color: black;
+            cursor: pointer;
+        }
+
+        .heading h1{
+            color: rgb(243, 243, 36);
+        }
+    </style>
+</head>
+<body>
+<div class="col">
+    <div class="heading">
+        <h1>Age Calculator</h1>
+    </div>
+    <div id="card">
+        <div class="form-group">
+            <input type="text" id="date-field" placeholder="Date">
+        </div>
+
+        <div class="form-group">
+            <select name="" id="month-field" class="form-control">
+                <option value="" selected disabled>Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="year-field" placeholder="Year">
+        </div>
+    </div>
+    <div class="box">
+        <button onclick="calculation()" class="btn">Calculate</button>
+    </div>
+</div>
+
+<script>
+    const calculation=()=>{
+        let date=document.getElementById("date-field").value;
+        let month=document.getElementById("month-field").value;
+        let year=document.getElementById("year-field").value;
+        if(date>31){
+            alert("input valid date")
+            return;
+        }
+        let Dob=new Date(`${date} ${month} ${year}`);
+        let now=new Date();
+        let diffrence=now-Dob;
+
+        let days=Math.round((diffrence)/(1000*60*60*24))
+        let realage=Math.round(days/365);
+        console.log(days+" Days");
+        console.log(realage+" Year");
+        alert(`Your age is ${realage} Year`)
+        // console.log(Dob);
+    }
+</script>
+</body>
+</html>
